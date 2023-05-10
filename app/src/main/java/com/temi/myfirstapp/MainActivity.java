@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.robotemi.sdk.Robot;
+import com.robotemi.sdk.TtsRequest;
 import com.robotemi.sdk.listeners.OnRobotReadyListener;
 
 public class MainActivity extends AppCompatActivity implements OnRobotReadyListener {
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements OnRobotReadyListe
         btnFront.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                long start_time = System.nanoTime();
+                robot.speak(TtsRequest.create("Hello"));
                 //robot.skidJoy(1,0, true);
             }
         });
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements OnRobotReadyListe
         btnRight.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                robot.speak(TtsRequest.create("Turning Right"));
                 robot.turnBy(90);
                 //robot.skidJoy(1,0, true);
             }
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements OnRobotReadyListe
         btnLeft.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                robot.speak(TtsRequest.create("Turning Left"));
                 robot.turnBy(-90);
                 //robot.skidJoy(1,0,true);
             }
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnRobotReadyListe
         btnBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                robot.speak(TtsRequest.create("Turning Behind"));
                 robot.turnBy(180);
                 //robot.skidJoy(1,0,true);
             }
